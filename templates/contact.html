@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .contact-form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 400px;
+  }
+
+  .contact-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form input[type="tel"],
+  .contact-form input[type="password"],
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  .contact-form textarea {
+    height: 120px;
+  }
+
+  .contact-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .contact-form input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+  
+  <div class="contact-form">
+    <h2>Contact Us</h2>
+    <form action="/contact/" method="post">
+    {% csrf_token %}  
+      <input type="text" name="Name" placeholder="Your First Name" required>
+      <input type="text" name="lastName" placeholder="Your Last Name" required>
+      <input type="tel" name="phone" placeholder="Your Phone Number" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="password" name="password" placeholder="Your Password" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <input type="submit" value="Send Message">
+    </form>
+  </div>
+  {% endblock %}
+</body>
+</html>
